@@ -43,5 +43,23 @@ namespace MoodAnalyserTest
             Assert.AreEqual(expected, actual);
 
         }
+        /// <summary>
+        /// TC 2.1 Nulls reference test.
+        /// </summary>
+        [TestMethod]
+        public void GivenNullShouldReturnHappy()
+        {
+            ///AAA Methodology
+            //assign
+            string expected = "happy";
+           
+            MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+            //act
+            string actual = moodAnalyser.AnalyseMood();
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
+       
     }
 }

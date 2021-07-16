@@ -6,25 +6,35 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyserProblem
 {
-   public  class MoodAnalyser
+    /// <summary>
+    ///Handling Exception
+    /// </summary>
+    public class MoodAnalyser
     {
         string message;
         public MoodAnalyser(string message)
         {
             this.message = message;
         }
-        //method to Analyse mood 
         public string AnalyseMood()
         {
-            message = message.ToLower();
-            if (message.Contains("sad"))
+            try
             {
-                return "sad";
+                message = message.ToLower();
+                if (message.Contains("sad"))
+                {
+                    return "sad";
+                }
+                else
+                {
+                    return "happy";
+                }
             }
-            else
+            catch (NullReferenceException e)
             {
                 return "happy";
             }
         }
     }
 }
+
