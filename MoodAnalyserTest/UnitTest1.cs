@@ -60,6 +60,54 @@ namespace MoodAnalyserTest
             Assert.AreEqual(expected, actual);
 
         }
+        /// <summary>
+        /// TC 3.1 Given NULL Mood Should Throw
+        // MoodAnalysisException
+        /// </summary>
+        [TestMethod]
+        public void Given_NullMood_Using_Custom_Exception_Return_Exception()
+        {
+            string expected = "Mood should not be null";
+            try
+            {
+                string message = null;
+                //act
+                string actual = new MoodAnalyser(message).AnalyseMood();
+            }
+            catch (MoodAnalyserException ex)
+            {
+                //assert
+                Assert.AreEqual(expected, ex.Message);
+            }
+
+        }
+        /// <summary>
+        /// TC 3.1 Given Empty Mood
+      //  Should Throw MoodAnalysisException indicating Empty Mood
+        /// </summary>
+        [TestMethod]
+        public void Given_Empty_Mood_Using_Custom_Exception_Return_Empty()
+        {
+            string expected = "Mood should not be empty";
+            try
+            {
+                string message = "";
+                //act
+                string actual = new MoodAnalyser(message).AnalyseMood();
+            }
+            catch (MoodAnalyserException ex)
+            {
+                //assert
+                Assert.AreEqual(expected, ex.Message);
+            }
+
+        }
+        /// <summary>
+        /// TC 3.1 Given NULL Mood Should Throw
+            // MoodAnalysisException
+        /// </summary>
+        
        
+
     }
 }
