@@ -8,8 +8,13 @@ namespace MoodAnalyserProblem
 {
    public  class MoodAnalyser
     {
-        //method to Analyse mood passing Message as parameter 
-        public string AnalyseMood(string message)
+        string message;
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
+        //method to Analyse mood 
+        public string AnalyseMood()
         {
             message = message.ToLower();
             if (message.Contains("sad"))
