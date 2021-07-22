@@ -82,7 +82,7 @@ namespace MoodAnalyserTest
 
         }
         /// <summary>
-        /// TC 3.1 Given Empty Mood
+        /// TC 3.2 Given Empty Mood
       //  Should Throw MoodAnalysisException indicating Empty Mood
         /// </summary>
         [TestMethod]
@@ -103,11 +103,49 @@ namespace MoodAnalyserTest
 
         }
         /// <summary>
-        /// TC 3.1 Given NULL Mood Should Throw
-            // MoodAnalysisException
+        /// T.C=4.1 Returns the mood analyser object with reflection-> Equal
         /// </summary>
-        
-       
+        [TestMethod]
+        public void ReturnMoodAnalyserObjectWithReflection()
+        {
+            object expected = new MoodAnalyser();
+            object actual = MoodAnalyserFactory.CreateObjectForMoodAnalyser("MoodAnalyserProblem.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(actual);
+        }
+        /// <summary>
+        /// T.C-4.2 Returns the mood analyser object with reflection1 -> class not found
+        /// </summary>
+        [TestMethod]
+        public void ReturnMoodAnalyserObjectWithReflection1()
+        {
+            string expected = "Class not found";
+            try
+            {
+                object actual = MoodAnalyserFactory.CreateObjectForMoodAnalyser("MoodAnalyser.MoodAnalyser", "MoodAnalyser");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
+        /// <summary>
+        /// T.C-4.3 Returns the mood analyser object with reflection1 -> constructor not found
+        /// </summary>
+        [TestMethod]
+        public void ReturnMoodAnalyserObjectWithReflection2()
+        {
+            string expected = "Constructor not found";
+            try
+            {
+                object actual = MoodAnalyserFactory.CreateObjectForMoodAnalyser("MoodAnalyserProblem.MoodAnalyser", "MoodAnalyser");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
+
+
 
     }
 }
