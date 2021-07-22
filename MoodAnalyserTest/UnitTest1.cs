@@ -144,7 +144,48 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, e.Message);
             }
         }
-
+        /// <summary>
+        ///T.C - 5.1 Returns the object with parameterized constructor.
+        /// </summary>
+        [TestMethod]
+        public void ReturnObjectWithParameterizedConstructor()
+        {
+            object expected = new MoodAnalyser("I am happy");
+            object actual = MoodAnalyserFactory.CreateObjectForMoodAnalyserParameterizedConstructor("MoodAnalyserProblem.MoodAnalyser", "MoodAnalyser", "I am happy");
+            expected.Equals(actual);
+        }
+        /// <summary>
+        ///T.C - 5.2 Returns the object with parameterized constructor.-> Class Not found Exception
+        /// </summary>
+        [TestMethod]
+        public void ReturnObjectWithParameterizedConstructor1()
+        {
+            string expected = "Class not found";
+            try
+            {
+                object actual = MoodAnalyserFactory.CreateObjectForMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyser", "MoodAnalyser", "I am happy");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
+        /// <summary>
+        ///T.C - 5.3 Returns the object with parameterized constructor.-> Constructor Not found Exception
+        /// </summary>
+        [TestMethod]
+        public void ReturnObjectWithParameterizedConstructor2()
+        {
+            string expected = "Constructor not found";
+            try
+            {
+                object actual = MoodAnalyserFactory.CreateObjectForMoodAnalyserParameterizedConstructor("MoodAnalyser.MoodAnalyser", "MoodAnalyser", "I am happy");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
 
 
     }
