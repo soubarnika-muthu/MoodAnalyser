@@ -186,7 +186,35 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, e.Message);
             }
         }
+        /// <summary>
+        /// TC-6.1 Invokes the method using reflection->return happy
+        /// </summary>
+        [TestMethod]
+        public void InvokeMethodUsingReflection()
+        {
+            string expected = "happy";
+            string actual = MoodAnalyserFactory.InvokeMoodAnalyser("I am happy", "AnalyseMood");
+            expected.Equals(actual);
 
+        }
+        /// <summary>
+        /// TC-6.2 Invokes the method using reflection->return happy
+        /// </summary>
+        [TestMethod]
+        public void InvokeMethodUsingReflection1()
+        {
+            string expected = "No method found";
+            try
+            {
+                string actual = MoodAnalyserFactory.InvokeMoodAnalyser("I am happy", "AnalyserMood");
+                expected.Equals(actual);
+            }
+            catch (MoodAnalyserException me)
+            {
+                Assert.AreEqual(expected, me.Message);
+            }
+
+        }
 
     }
 }
